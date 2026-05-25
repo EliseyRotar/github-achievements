@@ -1,200 +1,247 @@
-# GitHub Achievements Unlocker
+<div align="center">
 
-A complete guide + automation toolkit to help you earn **every** GitHub achievement badge.
+# 🏆 GitHub Achievements Unlocker
 
----
+**The only toolkit you need to earn every GitHub achievement badge — automatically.**
 
-## Achievement Overview
+[![Stars](https://img.shields.io/github/stars/EliseyRotar/github-achievements?style=for-the-badge&color=yellow&logo=github)](https://github.com/EliseyRotar/github-achievements/stargazers)
+[![Forks](https://img.shields.io/github/forks/EliseyRotar/github-achievements?style=for-the-badge&color=blue&logo=github)](https://github.com/EliseyRotar/github-achievements/network/members)
+[![Issues](https://img.shields.io/github/issues/EliseyRotar/github-achievements?style=for-the-badge&color=red&logo=github)](https://github.com/EliseyRotar/github-achievements/issues)
+[![License](https://img.shields.io/github/license/EliseyRotar/github-achievements?style=for-the-badge)](LICENSE)
 
-| Badge | Name | Requirement | Tiers | Auto? |
-|-------|------|-------------|-------|-------|
-| ⚡ | **Quickdraw** | Close an issue or PR within 5 min of opening | None | Yes (script) |
-| 🦈 | **Pull Shark** | Get PRs merged | x2 / x16 / x128 / x1024 | Partially |
-| 🧠 | **Galaxy Brain** | Get discussion answers marked as "Answered" | x2 / x8 / x16 / x32 | Manual |
-| ⭐ | **Starstruck** | Repo gets starred | 16 / 128 / 512 / 4096 | Manual |
-| 👥 | **Pair Extraordinaire** | Co-author commits on merged PRs | x1 / x10 / x24 / x48 | Yes (script) |
-| 🎯 | **YOLO** | Merge a PR without a review | None | Yes (workflow) |
-| 💖 | **Public Sponsor** | Sponsor any user/org via GitHub Sponsors | None | Manual |
-| 🧊 | **Arctic Code Vault** | Contributed to 2020 Archive Program | RETIRED | ❌ |
-| 🚁 | **Mars 2020 Helicopter** | Code used on NASA's Perseverance rover | RETIRED | ❌ |
+*Scripts · GitHub Actions · Step-by-step guides · Works in under an hour*
 
-> Retired badges are **not earnable** — don't waste time on them.
+[**Quick Start**](#-quick-start) · [**All Achievements**](#-achievements) · [**Scripts**](#-scripts) · [**FAQ**](#-faq)
+
+</div>
 
 ---
 
-## Step-by-Step Guide
+## 🚀 What is this?
 
-### 1. Quickdraw ⚡
-**What:** Close an issue or PR within 5 minutes of opening it.
+GitHub has **9 achievement badges** you can earn on your profile. Most people don't know how to get them — or think they require months of open-source contributions.
 
-**How to do it:**
-1. Go to any repo you own (this one works!)
-2. Open a new Issue
-3. Immediately click "Close issue" — done
+This repo gives you:
+- ✅ **Shell scripts** that automate Quickdraw, Pull Shark, and Pair Extraordinaire
+- ✅ **GitHub Actions workflows** that auto-merge PRs for YOLO
+- ✅ **Clear step-by-step guides** for every badge
+- ✅ **A ready-made discussion board** to practice Galaxy Brain
 
-**Or use the script:**
+> All badges can be earned **in your own repos** — no external contributions required for most of them.
+
+---
+
+## ⚡ Quick Start
+
 ```bash
-./scripts/get-quickdraw.sh YOUR_GITHUB_USERNAME YOUR_REPO_NAME YOUR_TOKEN
+# 1. Clone this repo
+git clone https://github.com/EliseyRotar/github-achievements.git
+cd github-achievements
+
+# 2. Get a GitHub token: Settings → Developer settings → Personal access tokens → repo scope
+
+# 3. Run whichever script you need:
+./scripts/get-quickdraw.sh   YOUR_USERNAME  YOUR_REPO  YOUR_TOKEN
+./scripts/get-pull-shark.sh  YOUR_USERNAME  YOUR_REPO  YOUR_TOKEN  16
+./scripts/get-pair-extraordinaire.sh  YOUR_USERNAME  YOUR_REPO  YOUR_TOKEN  48  "Friend" "friend@email.com"
 ```
+
+Badges appear on your profile within **24 hours**.
 
 ---
 
-### 2. Pull Shark 🦈
-**What:** Open pull requests that get merged.
+## 🏅 Achievements
 
-**Tiers:** 2 merged PRs → 16 → 128 → 1024
+### ⚡ Quickdraw
+> Close an issue or pull request within 5 minutes of opening it.
 
-**How to do it:**
-1. Create a new branch in this repo
-2. Make any small change (edit a file, add a line)
-3. Open a PR and merge it yourself
+**Tiers:** None — one-time badge
 
-**Repeat** — you can do this as many times as you want in this repo.
-
-**Or use the script to batch-create PRs:**
+**Automate it:**
 ```bash
-./scripts/get-pull-shark.sh YOUR_GITHUB_USERNAME YOUR_REPO_NAME YOUR_TOKEN NUMBER_OF_PRS
+./scripts/get-quickdraw.sh USERNAME REPO TOKEN
 ```
+**Manual:** Open any issue → immediately click Close issue. Done in 10 seconds.
 
 ---
 
-### 3. Galaxy Brain 🧠
-**What:** Post a reply in a GitHub Discussion that the OP marks as "Answered."
+### 🦈 Pull Shark
+> Have your pull requests merged.
 
-**Tiers:** 2 answers → 8 → 16 → 32
+| Tier | PRs Needed |
+|------|-----------|
+| 🥉 Base | 2 |
+| 🥈 Bronze | 16 |
+| 🥇 Silver | 128 |
+| 🏆 Gold | 1024 |
 
-**How to do it (easiest method):**
-1. Enable Discussions in this repo's Settings
-2. Create a new Discussion and ask a question
-3. With a second GitHub account (or ask a friend), reply with an answer
-4. Mark that reply as "Answered"
-
-> You can also genuinely help people in public repo discussions — this is the legit way.
-
----
-
-### 4. Starstruck ⭐
-**What:** Someone stars your repository.
-
-**Tiers:** 16 stars → 128 → 512 → 4096
-
-**How to do it:**
-- Share this repo with friends and ask them to star it
-- Post the repo on Reddit (r/github, r/programming)
-- Star-exchange communities (search GitHub topics for `star-exchange`)
-- Make your README interesting so it organically attracts stars
-
----
-
-### 5. Pair Extraordinaire 👥
-**What:** Make co-authored commits that get merged into a PR.
-
-**Tiers:** 1 co-authored PR → 10 → 24 → 48
-
-**How to do it:**
-Add this to the bottom of any git commit message:
-```
-Co-authored-by: Friend Name <friend@email.com>
-```
-
-**Or use the script to automate it:**
+**Automate it:**
 ```bash
-./scripts/get-pair-extraordinaire.sh YOUR_GITHUB_USERNAME YOUR_REPO_NAME YOUR_TOKEN
+# Earn bronze (16 PRs) in one command:
+./scripts/get-pull-shark.sh USERNAME REPO TOKEN 16
 ```
 
-The script creates a branch with a co-authored commit and opens + merges a PR automatically.
+The script creates branches, opens PRs, and merges them automatically. Run it multiple times to stack tiers.
 
 ---
 
-### 6. YOLO 🎯
-**What:** Merge a pull request without a code review.
+### 🧠 Galaxy Brain
+> Have your discussion reply marked as the accepted answer.
 
-**How to do it:**
-1. Make sure Branch Protection is OFF (or you're the only required reviewer)
-2. Open a PR and merge it immediately without requesting a review
-3. That's it — one-time badge
+| Tier | Answers Needed |
+|------|---------------|
+| 🥉 Base | 2 |
+| 🥈 Bronze | 8 |
+| 🥇 Silver | 16 |
+| 🏆 Gold | 32 |
 
-**The workflow `.github/workflows/yolo.yml` automates this if you enable Actions.**
+**How to earn it:**
+1. Enable Discussions in your repo settings
+2. Ask a question in the Q&A category
+3. Reply with the answer
+4. Mark it as "Answered"
 
----
-
-### 7. Public Sponsor 💖
-**What:** Sponsor any GitHub user or organization.
-
-**How to do it:**
-1. Go to any sponsored project (e.g., https://github.com/sponsors/nickvdyck)
-2. Click "Sponsor" and pick even the lowest tier ($1/month)
-3. Badge appears on your profile within 24 hours
-
-> Cancel anytime after the badge appears. Many developers sponsor for $1 just for the badge.
+> Check the [Discussions tab](../../discussions) in this repo — it's already set up with Q&A enabled!
 
 ---
 
-## Setup (Do This First)
+### ⭐ Starstruck
+> Have one of your repositories starred.
 
-1. **Fork or use this repo** — push it to your own GitHub account
-2. **Enable GitHub Actions** in your repo's Settings → Actions → Allow all actions
-3. **Enable Discussions** in Settings → Features → Discussions
-4. **Keep contributions public** — in your profile settings, enable "Show private contributions"
+| Tier | Stars Needed |
+|------|-------------|
+| 🥉 Base | 16 |
+| 🥈 Bronze | 128 |
+| 🥇 Silver | 512 |
+| 🏆 Gold | 4096 |
+
+**How to earn it:** Star this repo ⭐ and share it with friends! Every star counts toward the achievement.
 
 ---
 
-## Order of Operations (Fastest Path)
+### 👥 Pair Extraordinaire
+> Co-author commits that get merged in a pull request.
+
+| Tier | Co-authored PRs |
+|------|----------------|
+| 🥉 Base | 1 |
+| 🥈 Bronze | 10 |
+| 🥇 Silver | 24 |
+| 🏆 Gold | 48 |
+
+**Automate it:**
+```bash
+# Earn gold (48 PRs) in one command:
+./scripts/get-pair-extraordinaire.sh USERNAME REPO TOKEN 48 "Co-Author" "coauthor@email.com"
+```
+
+The script adds `Co-authored-by:` trailers to commits, which GitHub detects automatically.
+
+---
+
+### 🎯 YOLO
+> Merge a pull request without a code review.
+
+**Tiers:** None — one-time badge
+
+**Two ways to get it:**
+1. Open any PR → merge it before requesting a review
+2. Add the `yolo` label to any PR → the included GitHub Actions workflow merges it automatically
+
+---
+
+### 💖 Public Sponsor
+> Sponsor a GitHub user or organization via GitHub Sponsors.
+
+**Tiers:** None — one-time badge
+
+**How to earn it:** Go to any [GitHub Sponsors page](https://github.com/sponsors) and sponsor someone for $1/month. Cancel any time after the badge appears.
+
+---
+
+### 🧊 Arctic Code Vault Contributor *(Retired)*
+Awarded to developers whose code was stored in GitHub's 2020 Arctic Code Vault. No longer earnable.
+
+### 🚁 Mars 2020 Helicopter Contributor *(Retired)*
+Awarded to developers whose code flew on NASA's Perseverance rover. No longer earnable.
+
+---
+
+## 📁 Scripts
+
+| Script | What it does |
+|--------|-------------|
+| `scripts/get-quickdraw.sh` | Opens and instantly closes an issue via API |
+| `scripts/get-pull-shark.sh` | Creates N branches, opens PRs, and merges them all |
+| `scripts/get-pair-extraordinaire.sh` | Same but with `Co-authored-by:` commit trailers |
+
+All scripts require a [Personal Access Token](https://github.com/settings/tokens) with `repo` scope.
+
+### GitHub Actions Workflows
+
+| Workflow | Trigger | What it does |
+|----------|---------|-------------|
+| `.github/workflows/yolo.yml` | PR labeled `yolo` | Merges the PR immediately without review |
+| `.github/workflows/pull-shark-auto.yml` | PR labeled `auto-merge` | Auto-merges any labeled PR |
+
+---
+
+## 📋 Checklist
+
+Copy this into your own notes and tick off as you go:
 
 ```
-Day 1:
-  ✅ Quickdraw     → run the script or manually open+close an issue
-  ✅ YOLO          → push a branch, open PR, merge without review
-  ✅ Pull Shark x2 → merge 2 PRs in this repo
-
-Day 2–7:
-  ✅ Pair Extraordinaire → run the pair script repeatedly
-  ✅ Pull Shark (higher tiers) → keep merging branches
-  ✅ Public Sponsor → sponsor someone for $1
-
-Ongoing:
-  ⭐ Starstruck → share the repo and collect stars
-  🧠 Galaxy Brain → answer discussions (legit or self-answer with alt account)
+[ ] Quickdraw
+[ ] YOLO
+[ ] Pull Shark      — base (2) / bronze (16) / silver (128) / gold (1024)
+[ ] Pair Extraordinaire — base (1) / bronze (10) / silver (24) / gold (48)
+[ ] Galaxy Brain    — base (2) / bronze (8) / silver (16) / gold (32)
+[ ] Starstruck      — base (16) / bronze (128) / silver (512) / gold (4096)
+[ ] Public Sponsor
 ```
 
 ---
 
-## Checklist
+## ❓ FAQ
 
-- [ ] Quickdraw
-- [ ] YOLO
-- [ ] Pull Shark (base) — 2 PRs
-- [ ] Pull Shark (bronze) — 16 PRs
-- [ ] Pull Shark (silver) — 128 PRs
-- [ ] Pull Shark (gold) — 1024 PRs
-- [ ] Pair Extraordinaire (base) — 1 co-authored PR
-- [ ] Pair Extraordinaire (bronze) — 10
-- [ ] Pair Extraordinaire (silver) — 24
-- [ ] Pair Extraordinaire (gold) — 48
-- [ ] Galaxy Brain (base) — 2 answered discussions
-- [ ] Galaxy Brain (bronze) — 8
-- [ ] Galaxy Brain (silver) — 16
-- [ ] Galaxy Brain (gold) — 32
-- [ ] Starstruck (base) — 16 stars
-- [ ] Starstruck (bronze) — 128 stars
-- [ ] Starstruck (silver) — 512 stars
-- [ ] Starstruck (gold) — 4096 stars
-- [ ] Public Sponsor
+**How long until badges appear?**
+Up to 24 hours. Check your profile in an incognito window to rule out caching.
+
+**Do private repos count?**
+Yes — but only if you enable *Show private contributions* in your GitHub profile settings.
+
+**Can I earn Pull Shark by merging my own PRs?**
+Yes. You don't need another person to merge them — you can open and merge your own PRs.
+
+**Will GitHub detect this as spam?**
+These are all legitimate GitHub features used as intended. GitHub's own docs describe all these actions as the way to earn achievements.
+
+**Why aren't Arctic Code Vault / Mars 2020 earnable?**
+They were tied to one-time events (2020 archive snapshot and NASA mission). GitHub retired them permanently.
 
 ---
 
-## Notes
+## 🤝 Contributing
 
-- Achievements can take **up to 24 hours** to appear after completing the action.
-- Check in an **incognito window** if you don't see them right away.
-- Make sure your profile is **public** and contributions are set to visible.
-- You need a **Personal Access Token (PAT)** with `repo` scope to run the scripts.
+Found a new achievement or a better method? PRs welcome!
+
+If this helped you, please **⭐ star the repo** — it also helps others find it and contributes to the Starstruck achievement demonstration!
 
 ---
 
-## Sources & References
+## 📚 References
 
-- [Schweinepriester/github-profile-achievements](https://github.com/Schweinepriester/github-profile-achievements) — most accurate community list
-- [drknzz/GitHub-Achievements](https://github.com/drknzz/GitHub-Achievements) — full badge gallery
-- [githubachievements.com](https://githubachievements.com/) — guide site
+- [Schweinepriester/github-profile-achievements](https://github.com/Schweinepriester/github-profile-achievements) — community-maintained achievement list
+- [drknzz/GitHub-Achievements](https://github.com/drknzz/GitHub-Achievements) — badge gallery with images
 - [GitHub Community Discussion #176080](https://github.com/orgs/community/discussions/176080) — official community thread
+- [githubachievements.com](https://githubachievements.com/) — achievement guide
+
+---
+
+<div align="center">
+
+**If this repo helped you, smash that ⭐ star button — it means a lot and helps others find this!**
+
+Made with ❤️ for the GitHub community
+
+</div>
