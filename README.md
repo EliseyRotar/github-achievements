@@ -213,6 +213,9 @@ Yes — but only if you enable *Show private contributions* in your GitHub profi
 **Can I earn Pull Shark by merging my own PRs?**
 Yes. You don't need another person to merge them — you can open and merge your own PRs.
 
+**Pull Shark not showing after merging PRs?**
+Make sure your commits use a **GitHub-verified email**. Check with `git log -1 --format='%ae'` — it should match your GitHub noreply address (`ID+username@users.noreply.github.com`) or a verified email in [email settings](https://github.com/settings/emails). Commits with a local hostname email (e.g. `user@192.168.x.x`) may not count toward achievements.
+
 **Will GitHub detect this as spam?**
 These are all legitimate GitHub features used as intended. GitHub's own docs describe all these actions as the way to earn achievements.
 
